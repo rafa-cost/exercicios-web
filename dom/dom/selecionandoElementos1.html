@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #01</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">                                         <!--dentro da classe que tiver exercicio ele vai colocar a classe destaque(que esta no css)-->
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo">.terceiro .ultimo</div>
+    <script>              
+        document.getElementById('primeiro').classList.add('destaque')    //aqui ele esta pegando o elemento por id e adicionando uma classe destaque. Aparentemente isso esta deixando o box primeiro com o estilo destaque(classe do css)
+        
+        const divs = document.getElementsByTagName('div')                //aqui ele esta selecionando todas as tags div
+        Array.from(divs).forEach(e => e.classList.remove('destaque'))    //estou pegando todos elementos divs, transformei num array , vou percorrer cada um deles revomendo a classe destaque
+        
+        const divsArray = [...divs]                                     //pegando as divs e transformando em array
+        divsArray.forEach(e => e.classList.add('destaque'))             //estou passando a classe destaque para todas as divs
+        
+        const ultimosElementos = document.getElementsByClassName('ultimo')  //selecionando os elementos por nome da classe "ultimmo"
+        for(let e of ultimosElementos) {                                    //para cada elemento selecionado(ultimo), remover a classe destaque ou seja estamos removendo a classe destaque da div class='terceiro ultimo'
+            e.classList.remove('destaque')
+        }
+    </script>
+</body>
+</html>

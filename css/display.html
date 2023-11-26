@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Display</title>
+    <style>
+       body {
+        font-size: 40px;                        /*tamanho da fonte*/
+        color: #fff;                           /*cor da fonte*/
+        background-color: coral;             /*cor de fundo da pagina*/
+       }
+       ul { padding: 0;}
+       div { background-color: seagreen;}
+       span {background-color: dodgerblue;}
+       li { background-color: purple;}
+
+       div, span, li {
+        width: 50%;                           /*esse não pega, o que pega é o width de baixo*/
+        width: 200px;                         /*largura do box*/
+        height: 80px;                         /*altura do box*/
+        padding-top: 30px;                     /*padding-top para o texto não ficar colado no topo do box*/
+        text-align: center;                    /*texto no centro do box*/
+        display: block;                        /*faz com que cada elemento fique na sua propria linha, individualmente*/
+        display: inline;                      /*faz com que as div e span fiquem na mesma linha e os ul fiquem em outra linha, só que aqui ele tira algumas configurações de estilo*/                                  
+        display: inline-block;                /*faz com que as div e span fiquem na mesma linha e os ul fiquem em outra linha. Nesse display ele desconsiderada a configuração de altura e largura*/
+       }                                       /*qualquer um desses display faz com que o tag span pegue as configurações de largura e altura, pq antes ela não estava pegando. Aqui ele leva em consideração a altura e largura*/
+    </style>                                   <!--a tag ul faz com que quebre a linha e os boxs de li fiquem na linha abaixo-->
+</head>
+
+<body>
+    <div>Texto 1</div>
+    <span>Texto 2</span>
+    <span>Texto 3</span>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+</body>
+
+</html>

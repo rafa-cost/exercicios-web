@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'                                        //para posicionar de forma absoluta o item na tela
+
+        item.onmousemove = e => {                                               //"e" é o evento
+            const item = e.target
+            item.style.cursor = 'move'                                          //aqui é o cursor para mover
+            if (e.buttons) {
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`     //aqui é o calculo para movimento do elemento, aqui seria o calculo de movimento de cima e baixo, e na linha de baixo seria para os lados
+                e.target.style.left = `${e.clientX- (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>

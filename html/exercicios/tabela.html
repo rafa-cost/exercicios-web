@@ -1,0 +1,49 @@
+<table>
+    <caption>Produtos</caption>       <!--capitulo da tabela-->
+    <thead>                            <!--cabeçalho da tabela-->
+        <tr>                           <!--tr é a linha-->
+            <th>Produto</th>           <!--th informações das colunas-->
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>                         
+    <tbody>                            <!--corpo da tabela-->
+        <tr>
+        <td>iPad</td>
+        <td>3289,00</td>
+        <td>5</td>
+        <td>16445,00</td>
+    </tr>
+    <tr>
+        <td>Sansung 59</td>
+        <td>2649,00</td>
+        <td>8</td>
+        <td>21192,00</td>
+    </tr>
+    </tbody>
+    <tfoot>                                <!--rodapé da tabela-->
+        <tr>
+            <td colsapn="3">Total</td>     <!--esse "colsapn="3"" faz com que a linha ocupe 3 colunas-->
+            <td>37637,00</td>
+        </tr>
+    </tfoot>
+</table>
+<style>
+table{                                     /* css da tabela(configurações de estilo da tabela)*/
+    border-collapse: collapse;                 /*estilo borda da tabela*/
+}
+th, td {                                     /*espaçamento dentro da tabela*/
+    padding: 10px;
+}
+thead tr {                                     /*essa é a linha que separa o cabeçalho do corpo*/
+    border-bottom: solid 3px #444;
+}
+tbody tr:hover {                               /*aqui é o efeito(tr:hover) dentro do corpo (tbody)da tabela, que ao passar o mouse sobre a linha , a linha ficara sonbreada*/
+    background-color: #dedede;
+}
+tfoot {                                        /*estilo rodape*/
+    background-color: #444;
+    color: #fff;
+}
+</style>

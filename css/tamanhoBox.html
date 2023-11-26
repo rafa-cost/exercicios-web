@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Tamanho Box</title>
+    <style>
+       /*isso aqui embaixo é um seletor universal, e sera aplicado nas tags que estão utilizando box*/
+       *{
+        box-sizing: border-box;        /*aqui faz com que a borda e o padding fiquem dentro do box, não estrapolando o tamanho da pagina. Pq o border e o padding , aumentam o tamanho do box*/
+       }
+        
+        body {
+            font-size: 45px;    /*tamanho da fonte, div herda a fonte do body*/
+            margin: 0;           /*margem 0 na pagina*/
+        }
+
+        div {
+            background-color: deepskyblue;          /*cor do box*/
+            width: 100%;                        /*100% de largura*/
+            height: 300px;                      /*300px de altura*/
+            padding: 100px;                      /*espaçamento interno entre o texto e o box*/
+            border: solid 20px;                 /*borda de 20px*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        O tamanho do Box é...
+    </div>
+</body>
+</html>

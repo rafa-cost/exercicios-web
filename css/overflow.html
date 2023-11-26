@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Overflow</title>
+    <style>
+        div {
+            font-size: 40px;         /*fonte, largura, altura e borda*/
+            height: 100px;
+            width: 260px;
+            border: solid 3px;
+            overflow-y: hidden;       /*barra só embaixo*/
+            overflow-x: scroll ;      /*barra só embaixo*/
+            overflow: scroll;         /*padrão barra embaixo e na lateral*/
+            overflow: hidden;         /*sem barras*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        TudoFuncionaMuitoBemEmCSS!!!
+        Texto muito grande para caber nessa div.
+        Já pensou qual será o comportamento padrão?
+    </div>
+</body>
+</html>

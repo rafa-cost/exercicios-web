@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Axios #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src="js/axios.js"></script>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'                                 //endereço do arquivo
+        axios(url).then(resp => {                                        //pegando o endereço
+            const itens = resp.data.reduce(                              //pegando array , pegando arquivo usando função reduce pegando o html e o estado por unidade, html + é um acumulador, pegando de estado o valor nome e transformando em uma lista, e a string vazia é para pegar o primeiro valor do arquivo se não começa pelo segundo . E  passando tudo isso para variavel itens.
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+            )
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`) // passando itens(const itens) para dentro de tag ul, para imprimir o resultado na pagina
+        })
+    </script>
+</body>

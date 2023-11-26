@@ -1,0 +1,56 @@
+*{
+    box-sizing: border-box;
+}
+@font-face {                               /*essa fonte que sera usada para marcação de pontos */
+    font-family: 'Pixel';
+    src: url('../fonts/Pixel.ttf');
+}
+[wm-flappy] {                             /*configurações do fundo azul da pagina, como posicionamento, borda, altura, largura, margem, cor de fundo*/
+    position: relative;
+    border: 5px solid dodgerblue;
+    height: 700px;
+    width: 1200px;
+    margin: 15px;
+    background-color: deepskyblue;
+    overflow: hidden;                    /*qualquer elemento que estiver fora da div não vai aparecer, isso é importante pro jogo, para o cano só aparecer quando estiver dentro do espaço da tela*/
+}
+.passaro {                            /*configurações do passaro, posicionamento, largura, */
+    position: absolute;
+    width: 60px;
+    left: calc(50% - 30px);          /*posiconamento horizontal*/
+                        /*posicionamento vertical*/
+}                                    /*para que a posição inicial seja exatamente no meio*/
+.par-de-barreiras {                  /*par de barreira são as barreiras que ficam embaixo e em cima*/
+    position: absolute;
+    top: 0;                          /*grudado no topo*/
+    height: 100%;                    /*altura*/
+    display: flex;
+    flex-direction: column;         /*estou organizando na vertical(column)*/
+    justify-content: space-between;  /*esta propriedade é para ter um espaço no meio entre os canos, o cano de cima e de baixo*/
+}
+.barreira {                          /*aqui é a propria barreira em si. Definimos ela na horizonta(column), */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.barreira .borda {                  /*altura e largura da cabeça do cano, cor do cano(meio sombreada) e cor da borda*/
+    height: 30px;
+    width: 130px;
+    background: linear-gradient(90deg, #639301, #a5e82e);
+    border: 2px solid #000;
+}
+.barreira .corpo {                 /*aqui é o corpo do cano que é mais fino do que a cabeça e as configurações abaixo*/
+    height: 150px;
+    width: 110px;
+    background: linear-gradient(90deg, #639301, #a5e82e);
+    border-left: 2px solid #000;   /*o corpo do cano só vai ter borda na esquerda e direita*/
+    border-right: 2px solid #000;
+}
+.progresso {                      /*estilo de fonte da marcação dos pontos*/
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: Pixel;
+    font-size: 70px;
+    z-index: 100;
+}

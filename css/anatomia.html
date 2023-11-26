@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Anatomia CSS</title>
+    <style>
+        .seletor {
+            color: #fff;                           /*cor da fonte*/
+            font-size: 30px;                         /*tamanho da fonte*/
+            text-align: center;                      /*alinhamento do texto*/
+            border: solid 5px navy;                /*largura e cor da borda*/
+            font-family: helvetica, sans-serif;      /*estilo da fonte , se a primeira fonte não der certo, tem a segunda*/
+            width: calc(100% - 40px);                /*largura do box. Esse 40 px eu percebi que tem haver com a margem direita do box*/
+            background-color: rgb(34, 153, 189);   /*cor de fundo do box*/
+        }
+        /*usando uma pseudo-classe*/
+        .seletor:hover {                            /*esse "hover" ele ira fazer um efeito de troca de cor do box assim que passar o mouse sobre o box*/
+            background-color: orangered;
+        }
+        /*usando um pseudo-elemento*/
+        .seletor::first-letter {                    /*colocando estilo na primeira letra da palavra*/
+            font-size: 60px;
+            font-weight: bold;
+        }
+        /*padrão de nomenclatura?*/
+        /*dash-case ou camelCase?*/
+    </style>
+</head>
+
+<body>
+    <div class="seletor">Conteúdo</div>
+</body>
+
+</html>

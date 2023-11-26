@@ -1,0 +1,47 @@
+<video id="meuVideo" width="800" height="450" controls autoplay controlsList="nodownload">  <!--id do video, altura, largura e estamos bloqueando o download do video-->
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">           <!--endereço do video e tipo do video-->
+    Seu browser não suporta a tag de video.                                                 <!--o source suporta varios tipos de videos, se por acaso não achar o tipo do video ou der algum erro aparecera essa msg-->
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+<style>
+    .progresso {                         /*altura, largura, borda e margem externa. Da barra de progresso*/
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444;
+        margin: 20px;
+    }
+
+    .progresso > div {                    
+        background-color: red;           /*fundo vermelho*/
+        color: #fff;                      /*cor branca*/
+        height: 100%;                      /*altura 100%*/
+        text-align: right;                  /*alinhamento do texto*/
+        font-size: 14px;                   /*tamanho da fonte*/
+        width: 30%;                         /*largura 30%*/
+    }
+</style>
+<script>
+    function configurarVideo(id) {
+        const video = document.getElementById(id)                                  //pegando o video pelo id
+        video.oncontextmenu = () => false                                          //aqui no caso é para não mostrar o menu de contexto, aquele menu que aparece quando clicamos com o botão direito no video
+
+        document.querySelector(`[wm-play=${id}]`).onclick = e => video.play()       //configurando o botão play e pause, que criamos acima na tag div. Aqui o querySelector(`[wm-pause=${id}]`)esta filtrando pelo atributo e pelo id do video. Recebemos um evento ao click, que é a chamada da função play
+        document.querySelector(`[wm-pause=${id}]`).onclick = e => video.pause()
+
+        setInterval(() => {                                                        //configurando a barra de progresso
+            const percentual = (video.currentTime / video.duration) * 100          //fazendo a conta para a barra de progresso
+            const valorDiv = document.querySelector(`[wm-progresso=${id}] > div`)   //estamos pegando a tag div , do atributo wm-progresso
+            valorDiv.style.width = `${percentual}%`                                 //pegando a variavel percentual, que mostrara a evolução da barra 
+            valorDiv.innerHTML = `${percentual.toFixed(1)}%`                         //(innerHTML)aqui estamos colocando o texto dentro da barra progresso para ver a evolução eumerada. Aqui no caso é para gerar apenas uma casa decimal{percentual.toFixed(1)}.
+        })
+    }
+    configurarVideo('meuVideo')                                                    //passando o id do meu video
+</script>

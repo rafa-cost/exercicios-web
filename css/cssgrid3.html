@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #03</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        *{
+            padding: 0;         /*padding 0 e margem 0 entre os boxs e a pagina*/
+            margin: 0;
+        }
+        header {                      /*nomeando as grid area*/
+            grid-area: cabecalho;
+        }
+        nav {
+            grid-area: navegacao;
+        }
+        main {
+            grid-area: conteudo;
+        }
+        footer {
+            grid-area: rodape;
+        }
+        body {
+            display: grid;
+            min-height: 100vh;                    /*altura minima. Aqui o conjunto de box ira ocupar 100% da altura da pagina*/
+            grid-template-columns: 400px 1fr;     /*serão 2 colunas, coluna cabecalho 400 px e a coluna navegação 1 fragmento*/
+            grid-template-rows: 100px 1fr 100px;  /*cabeçalho é o primeiro box com 100px,(1fr)1 fragmento que ocupa a maior parte da pagina a parte do meio que é dividida por navegação e conteudo, e 100px que é do rodapé*/
+            grid-template-areas:                  /*aqui é a ordem dos boxs, primeiro cabeçalho, depois dividindo espaço a navegação e conteudo e por ultimo o rodapé*/
+            'cabecalho cabecalho'
+            'navegacao conteudo'
+            'rodape rodape';
+        }
+        @media(max-width: 700px) {                       /*de 700px para baixo ira fazer uma quebra de pagina, com a configurações abaixo */
+            body {
+                grid-template-columns: 1fr;              /*aqui é para os boxs ocuparem a largura da pagina inteira*/
+                grid-template-rows: 80px 1fr 100px;      /*aqui a primeira linha tem 80px, a segunda 1 fragmento a terceira 100px*/
+                grid-template-areas:                     /*as linhas ficaram nessa ordem*/
+                
+                'navegacao'
+                'conteudo'
+                'rodape' ;
+            }
+            header {display: none;}                      /*aqui é para o cabeçalho não aparecer*/
+        }
+    </style>
+</head>
+
+<body>
+    <main class="tag">CONTEÚDO</main>
+    <header class="tag">CABEÇALHO</header>
+    <footer class="tag">RODAPÉ</footer>
+    <nav class="tag">NAVEGAÇÃO</nav>
+
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #02</title>
+    <style>
+        .fora {
+            position: relative;
+            background-color: orange;
+            height: 400px;
+            width: 400px;
+            padding: 50px;          /*o padding faz um espaçamento interno no box. Por isso causa um enchemento dentro do box e por conta disso ele fica maior*/
+        }
+        .dentro {
+            background-color: mediumvioletred;
+            height: 100px;
+            width: 100%;
+            position: relative;   /*ocupando espaço do conteudo*/   /*aqui o retangulo fica dentro do outro certinho*/
+            position: static;     /*ocupando espaço do conteudo*/   /*aqui o retangulo fica dentro do outro certinho*/
+            position: fixed;      /*viewport*//*aqui o retangulo ocupa 100% da largura da pagina, portanto ele ultrapassa o retangulo(fora) pelo lado direito, e se ve que ele tem um afastamento do lado esquerdo por conta do padding do retangulo(fora) */
+            position: absolute;   /*conteudo + padding*/ /*aqui ele ultrapassa o lado direito do retangulo, por conta do padding do retangulo(fora)*/
+        }
+    </style>
+</head>
+<body>
+    <div class="fora">
+        <div class="dentro"></div>
+    </div>
+</body>
+</html>

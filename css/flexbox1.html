@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #01</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div {
+            border: solid 5px dodgerblue;     /*cor da borda, tamanho da fonte, e margem dos boxs*/
+            font-size: 40px;
+            margin: 5px;
+        }
+        .big{
+            font-size: 1.5em;                   /*fonte maior da div class big(ela vai ficar 50% maior em relação as outras)*/
+        }
+        .flex-container {
+            display: flex;                       /*aqui ele faz com que o conteudo se adeque quando a tela diminuir*/
+            width: 50%;                         /*largura metade da pagina*/
+            height: 200px;                      /*altura*/
+            flex-direction: column-reverse;
+            flex-direction: row;
+            flex-direction: column;              /*aqui os numeros ficam em 2 linhas de colunas cada uma com 5 numeros*/
+            flex-direction: row-reverse;
+            flex-flow: column-reverse wrap;
+            flex-wrap: wrap;                      /*numeros ficam em ordem de colunas*/
+            flex-flow: row wrap;
+            flex-wrap: wrap-reverse;
+            justify-content: space-around;
+            justify-content: space-between;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            justify-content: flex-start;
+            justify-content: center;             /*deixa as colunas alinhas dentro do boxs maior*/
+            /*cross axis*/
+            height: 400px;                     /*altura*/
+            align-items: flex-start;           /*os boxs ficam bem menores, e as opções abaixo é mais questão de alinhamento*/
+            align-items: flex-end;
+            align-items: center;            
+            align-items: stretch;
+            align-items: baseline;
+            /*mais de uma linha*/
+            align-content: flex-start;        /*os boxs ficam bem menores, e as opções abaixo é mais questão de alinhamento*/
+            align-content: flex-end;
+            align-content: center;
+            align-content: space-between;
+            align-content: space-around;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container ">        <!--responsavel pelo box maior , que guarda os boxs menores-->
+        <div >1</div>
+        <div>2</div>
+        <div class="big">3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div>10</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

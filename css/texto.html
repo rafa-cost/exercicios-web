@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Texto</title>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <style>
+        /* ... */
+        * {
+            margin: 0;
+        }
+        html{
+            font-size: 28px;
+        }
+
+        body {
+            display: flex;              /*faz com que o botão fique no meio*/
+            flex-direction: column;     /*aqui é para ajustar o texto e o botão na pagina(por colunas), para o texto fica em cima e o botão embaixo*/
+            align-items: center;        /*faz com que o botão não ocupe a largura da tela inteira*/
+        }
+
+        div {
+            font-size: 50px;
+        }
+        p {
+            /*valores padrões*/
+            font-size: 1em;
+            font-size: 100%;
+            font-size: 16px;
+            font-size: 12pt;
+            /*unidades absolutas*/
+            font-size: 100px;   /*tamanho do pixel é relativo*/
+            font-size: 72pt;    /*pontos*/
+            font-size: 1in;     /*polegada*/
+            /*unidades relativas*/
+            font-size: 2.2em;
+            font-size: 2.2rem;
+            font-size: 50vh;
+            font-size: 10vw;              /*tamanho da fonte, aqui a fonte ira se ajustar conforme o tamanho da tela*/
+
+            font-family: monospace;
+            font-family: Georgia, serif;
+            font-family: Verdana, sans-serif;        /*aqui no caso são 2 fontes, pq se não achar a primeira tem a segunda*/
+            font-family: 'Indie Flower', cursive;   /*fonte utilizada*/
+
+            font-weight: 100;
+            font-style: italic;
+            text-transform: uppercase;      /*letras maiusculas*/
+            /*text-decoration: overline underline line*/
+            word-spacing:  10px;          /*espaçamento por palavra*/        
+            letter-spacing: 20px;         /*espaçamento por letra*/
+            line-height: 2.5em;           /*altura da linha*/    
+            text-align: center;           /*alinhamento do texto*/
+        }
+        .botao {
+            font-size: 28px;
+            text-decoration: none;    /*para tirar o sublinhado que fica embaixo da palavra por conta da tag a*/
+            padding: 10px 30px;        /*espaçamento interno do botão*/
+            border-radius: 25px;       /*borda arredondada */
+        }
+
+        .destaque {
+            color: #fff;                         /*cor da letra*/
+            background: tomato;                  /*cor interna do box*/
+            box-shadow: 2px 2px 1px 1px #000;   /*sombra do box*/
+        }
+
+        .destaque:active {             /*isso fara um efeito que ao clicarmos no botão suma a sombra do botão*/
+            box-shadow: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p>
+            Que texto
+            <br>legal!!!
+        </p>
+    </div>
+    <a href="http://google.com" class="botao destaque">Google</a>
+</body>
+
+</html>

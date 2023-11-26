@@ -1,0 +1,14 @@
+
+
+grid-template-rows: repeat(3, 1fr);
+
+grid-column-gap: 20px;                /*espaçamento dos boxs nas laterais*/
+grid-row-gap: 20px;                   /*espaçamento entre os boxs em cima e embaixo*/
+grid-gap: 50px 10px;                  /*primeiro é o espaçamento de linha(cima e embaixo) e o segundo de coluna()laterais*/
+grid-gap: 10px;                       /*espaçamento dos boxs em geral, tanto nas laterais quanto em cima e embaixo*/
+
+
+grid-column-start: metade-2;    /*primeiro e segundo grid não estão fazendo nada*/
+    grid-column-end: fim;
+    grid-column: meio-1 / fim;  /*esses 2 grids não estão fazendo nada*/
+    grid-row: 1 / span 2;

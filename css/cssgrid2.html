@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #02</title>
+    <style>
+        html,
+        body {
+            margin: 20px;                        /*Margem. Altura do conteiner, de 100% tirando 20px embaixo e 20px em cima, para caber melhor na tela. E cor do fundo da pagina*/
+            height: calc(100% - 40px);
+            background-color: lightgray;
+        }
+        
+        div {                                    
+            display: flex;                       /*flebox*/
+            align-items: center;                 /*alinhando o numero na vertical*/
+            justify-content: center;             /*alinhando o numero na horizontal*/
+            font-size: 30px;                     /*tamanho da fonte*/
+            border: solid 5px dodgerblue;       /*cor da borda e embaixo cor do fundo*/
+            background: #fff;
+            
+        }
+        body {
+            display: grid;
+            grid-template-columns:[inicio] 1fr [metade-1 meio-1] 1fr [metade-2 meio-2] 1fr [fim];     /*aqui são os nomes das linhas das colunas, portanto são 4 linhas com quatro nomes. E 3 fragmentos iguais(1fr)*/
+            grid-template-rows: repeat(3, 1fr);        /*diminuiu o tamanho das colunas mais continua 3 colunas iguais*//*aqui ele dividiu as 3 colunas em 9 boxs iguais, portanto só aparece os 3 primeiros boxs, mas se vc olhar no grid da para ver*/
+            grid-column-gap: 20px;                /*espaçamento dos boxs nas laterais*/
+            grid-row-gap: 20px;                   /*espaçamento entre os boxs em cima e embaixo*/
+            grid-gap: 50px 10px;                  /*primeiro é o espaçamento de linha(cima e embaixo) e o segundo de coluna()laterais*/
+            grid-gap: 10px;                       /*espaçamento dos boxs em geral, tanto nas laterais quanto em cima e embaixo*/                  
+        }
+        .d1 {
+    grid-column-start: metade-2;                  /*aqui a div1 começa na coluna 3 */
+    grid-column-end: fim;                         /*e termina na coluna 4*/
+    
+    grid-column: meio-1 / fim;                 /*aqui ele começa na coluna 2 (meio-1) e vai até a coluna 4(fim)*/
+    grid-row: 1 / span 2;                     /*começa na linha 1 e termina na linha 2*/
+    /* row-start column-start row-end column-end */
+    grid-area: 1 / meio-1 / span 3 / fim;     /*aqui ele começa na linha 1 e vai até a linha 3. Ai ele começa na coluna2(meio-1) e vai até a coluna 4(fim) */
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+</body>
+
+</html>

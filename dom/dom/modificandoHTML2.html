@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <p>Texto Inicial</p>
+    </div>
+    <script>
+        const div = document.querySelector('div')                     //selecionando a tag div
+        div.innerHTML = 'Texto Alterado'                              //esse texto ficara no meio do box entre as frases abaixo
+        //div.outerHTML = 'Texto Alterado'
+        div.insertAdjacentHTML('beforebegin', '<p>Antes Inicio</p>')  //aqui no caso a msg é antes do inicio da tag, por isso o texto fica fora do box
+        div.insertAdjacentHTML('afterbegin', '<p>Depois Inicio</p>')
+        div.insertAdjacentHTML('beforeend', '<p>Antes fim</p>')
+        div.insertAdjacentHTML('afterend', '<p>Depois Fim</p>')      //e aqui é depois do fim da tag, por isso o texto também fica fora do box
+        
+        //somente texto (sem tags)
+        console.log(div.innerText)
+    </script>
+</body>
+
+</html>

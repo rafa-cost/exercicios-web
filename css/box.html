@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Box Model</title>
+    <style>
+        body { font-size: 80px; margin: 0;}    /*tamanho da fonte, pelo que eu to vendo é margem do todo 0*/
+        .c1 {background-color: orange;}       /*cor de cada box*/
+        .c2 { background-color: skyblue;}
+        .c3 { background-color: tomato;}
+
+        div {
+            float: left;                      /*todos os boxs na mesma linha e alinhados a esquerda. Acho que isso também faz com que quando diminuimos a tela aconteça a quebra de linha*/
+            padding-top: 100px;               /*esse não esta pegando por conta da especificidade*/
+            padding: 10px 50px 100px 150px;   /*não ta pegando*/
+            padding: 100px 50px;              /*não ta pegando*/
+            padding: 50px;                   /*padding de 50px em todos os lados, pega esse pq é o ultimo elemento*/
+            margin: 0px 20px;                /*a margim de cada box em cima e embaixo e 0px e nas laterais e 20px
+            border: solid 15px black;     /*borda dos boxs*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1">1</div>
+    <div class="c2">2</div>
+    <div class="c3">3</div>
+</body>
+
+</html>

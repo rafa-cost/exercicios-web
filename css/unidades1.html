@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Unidades #01</title>
+    <style>
+        .unidades-absolutas {
+            position: absolute;             /*para posicionamento do box dentro da pagina temos que usar "position: absolute", para usarmos o top e o left.*/
+            font-size: 40px;
+            padding: 20px;
+            border: solid 5px #222;
+            margin: 30px;
+            width: 4cm;
+            height: 20mm;                     /*não é muito usado o mm(milimetros) e também o cm(centimetros)*/
+            top: 150px;
+            left: 200px;
+        }
+        .unidades-relativas {                /*ele coloca esses valores em porcentagem por conta que o box vai variar de acordo com a tamanho da pagina. Por isso não coloca um valor fixo e sim um valor em porcentagem de acordo com a tamanho da tela*/
+            position: absolute;
+            font-size: 4em;                  /*tamanho da fonte*/
+            padding: 5%;                     /*espaçamento interno em "%"*/  
+            border: solid 1vw #222;        /*configurações borda*/
+            margin: .8%;                     /*o espaçamento externo do box*/
+            width: 20vw;                     /*largura e altura*/
+            height: 15vh;
+            bottom: 5%;                      /*distancia do box para o fundo da pagina*/
+            right: 5%;                       
+        }
+    </style>
+</head>
+
+<body>
+    <div class="unidades-absolutas">Opa!</div>
+    <div class="unidades-relativas">Epa!</div>
+</body>
+
+</html>

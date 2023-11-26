@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #03</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+            xhr.onreadystatechange = e => {
+                if (xhr.readyState === 4) {                    //se a requisição foi finalizada e a reposta esta pronta, ai vai para as linhas de baixo
+                    if (xhr.status === 200) {                  //200 código de sucesso
+                        config.sucesso(xhr.responseXML)
+                    } else if (xhr.status >= 400) {            //400 código de erro
+                        config.erro({                          //configuração de erro com código e texto
+                            codigo: xhr.status,
+                            texto: xhr.statusText
+                        })
+                    }
+                }
+            }
+            xhr.send()                                         //aqui vai enviar a requisição
+        }
+        ajax({
+            url: "dados/estados.xml",                          //endereço do arquivo
+            metodo: "get",                                     //metodo utilizado é o get
+            sucesso(resposta) {                                //aqui é a função sucesso que eu vou receber uma resposta
+                const estados = resposta.getElementsByTagName('estado')  //estado nome do arquivo
+                const itens = Array.from(estados).reduce(                 //convertendo estado em array e utilizando a função reduce
+                    (html, estado) => html + `<li>${estado.attributes.nome.value}</li>`, ''  //essa função reduce ela vai pegar o html e cada um dos estados.Esse "html +"é um acumulador. Pegando os atributos de tag estado e transformando eles em uma lista. E a estring vazia é o valor inicial que eu vou passar para minha função reduce
+                )
+                document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)           //eu pego todos os itens(const itens) e coloco dentro de uma tag "ul"
+            },
+            erro(e) {
+                const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)   //msg de erro com código e texto
+                document.body.appendChild(msg)
+            }
+        })
+    </script>
+</body>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Grid #01</title>
+    <style>
+        /* https://caniuse.com/#feat=css-grid */
+        
+        html,
+        body {
+            margin: 20px;                      /*margem de 20px*/
+            height: calc(100% - 40px);         /*é referente a altura do container, (100% - 40px) estamos tirando 20px de cima e 20 px embaixo de margem. Isso é para que o container não ultrapasse a altura da tela e fique aquela barra lateral*/
+            background-color: lightgray;     /*cor de fundo da pagina*/
+        }
+        
+        div {
+            display: flex;                    /*display flex aqui é para gente passar as outras 2 configurações abaixo, se não as 2 configurações abaixo não funcionam(elas são consequencia do display flex)*/ 
+            align-items: center;              /*alinhando os numeros no box de forma vertical*/
+            justify-content: center;          /*alinhando  os numeros no box de forma horizontal*/
+            font-size: 30px;                  /*tamanho da fonte*/
+            border: solid 5px dodgerblue;   /*borda*/
+            background: #fff;               /*cor de fundo da tabela*/
+        }
+        body {
+            display: grid;                                    /*isso aqui tem muito a ver com a largura das colunas*/
+            grid-template-columns: repeat(4, 8.33% 8.33%);    /*2 linhas de colunas*/
+            grid-template-columns: 50% 50%;                   /*2 colunas com 6 numeros cada, ou seja 2 colunas iguais*/          
+            grid-template-columns: repeat(12, 8.33%);         /*12 colunas e o tamanho de cada*/
+            grid-template-columns: repeat(11, 100px) 100px;   /*12 colunas iguai*/
+            /*minmax(100px, 300px)*/
+            grid-template-columns: 200px 20% 1fr;            /*largura das 3 colunas*/
+            grid-template-columns: 3fr 6fr 3fr;              /*largura de cada coluna*//*essa configuração ta pegando na coluna*/
+            grid-template-rows: 50% 25% 12.5% 12.5%;          /*altura de cada linha*/
+            grid-template-rows: 100px 1fr;                    /*aqui a primeira linha 100px, a segunda linha um fraguimento, e a terceira e quarta linha o que sobrar*/
+            grid-template-rows: 100px auto auto auto;         /*aqui é 100px na primeira linha e o restante automatico(sera dividido igual pelas outras linhas). E essa configuração ta pegando na linha */
+        }
+        
+        .d8{                          
+    grid-column-start: 2;
+    grid-column-end: 4;               /*a div 8, começa na coluna 2 e termina na coluna 4*/
+    grid-column-end: span 2;         /*aqui da o mesmo efeito que acima, faz o div 8 pegar 2 colunas*/
+    grid-row-start: 3;
+    grid-row-end: 5;                  /*a div também esta ocupando a linha de 3 a 5*/
+    grid-row-end: span 2;             /*tem o mesmo efeito que o codigo acima, faz a div 8 pegar 2 linhas*/
+}
+
+.d10,
+.d11 {
+                             /* podem se sobrepror*/
+grid-column-start: 1;       /*as div 10 e 11 tem que começar na coluna 1 e ir até a 3*/
+grid-column-end: 3;
+grid-row-start: 5;         /*as divs 10 e 11 tem que começar na linha 5, ai a div 11 se sobrepõem a div 10*/
+grid-row-end: span 1;
+}
+
+.d10 {                         /*aqui estamos colocando a div 10 sobre a div 11 (sobrepondo).*/
+z-index: 10;
+}
+
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="d1">1</div>
+    <div class="d2">2</div>
+    <div class="d3">3</div>
+    <div class="d4">4</div>
+    <div class="d5">5</div>
+    <div class="d6">6</div>
+    <div class="d7">7</div>
+    <div class="d8">8</div>
+    <div class="d9">9</div>
+    <div class="d10">10</div>
+    <div class="d11">11</div>
+    <div class="d12">12</div>
+</body>
+
+</html>

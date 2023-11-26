@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+     const lista = document.querySelector('div ul[destino="escritório"]')   /*definindo variavel lista*/
+     console.log('Elemento "ul"............')                               /*imprimindo isso*/
+     console.log('childNodes', lista.childNodes)                            /*imorimido as li com os espaços(text)*/
+     console.log('destino', lista.childNodes)                               /*imprimindo a mesma lista que o codigo acima*/
+     console.log('getAttribute', lista.getAttribute('destino'))             /*o atributo destino é igual a "escritório"*/
+     console.log('hasAttribute', lista.hasAttribute('destino'))             /*Vendo se tem o atraibuto destino, vai dar "true"*/
+     lista.setAttribute('destino', 'empresa')                      /*setAttribute é para alterar algum atributo ou adiconar*/
+     lista.setAttribute('status', 'aberto')
+     lista.removeAttribute('destino')                              /*removendo atributo destino*/
+     console.log(lista.dataset.urgencia)                           /*aqui ele esta imprimindo o valor de atributo data-urgencia*/            
+     lista.dataset.urgencia = 4                                    /*aqui ele esta alterando o valor*/
+     console.log(lista.getAttribute('data-urgencia'))              /* e aqui imprimindo*/
+
+     //cuidado
+     const label = document.querySelector('label')
+     console.log(label.for)                                        /*aqui vai dar undefined*/
+     console.log(label.htmlFor)                                     /*aqui vai impprimir compras*/
+     console.log(label.getAttribute('for'))                         /*vai imprimir compras*/
+    </script>
+</body>
+
+</html>

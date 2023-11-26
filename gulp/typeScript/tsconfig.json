@@ -1,0 +1,10 @@
+{
+    "include": [
+        "src/**/*.ts"                   //pegando os arquivos ts dentro da pasta src
+    ],
+    "compilerOptions": {
+        "rootDir": "src",              //diretorio
+        "noImplicitAny": true,
+        "target": "es5"               //transformando em js, "es5" é uma versão de javascript
+    }
+}

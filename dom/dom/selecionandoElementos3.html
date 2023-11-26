@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #03</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        form input,
+        form select,
+        form button {
+            margin: 10px;
+            font-size: 1.6em;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Formulário</h1>
+    <form name="pesquisa" action="http://www.google.com.br/search">
+        <input type="text" name="q" placeholder="Digite o termo...">
+        <select name="hl">
+            <option value="pt-br">Português (Brasil)</option>
+            <option value="en-us">Inglês (Americano)</option>
+        </select>
+        <button>Pesquisar</button>
+    </form>
+    <script>
+        console.log(document.forms)                            /*ele traser um array com todos os formullarios do tipo HTMLCollection */
+        console.log(document.forms[0])                        /*ele esta pegando o indice 0 de array forms ou seja <form name="pesquisa" action="http://www.google.com.br/search">*/
+        console.log(document.getElementsByName('pesquisa'))   /*o getElementsByName traz NodeList*/
+        console.log(document.pesquisa)                        /*ele vai imprimir a tag form name="pesquisa*/
+        console.log(document.pesquisa.q)                      /*ele vai imprimir (<input type="text" name="q" placeholder="Digite o termo...">) por conta do q*/
+        document.pesquisa.q.value = 'Linux Brasil'            /*ele esta alterando o valor do primeiro campo*/
+        document.pesquisa.hl.value = 'en-us'                  /*ele esta alterando o valor do segundo campo (idioma)*/
+        console.log(document.pesquisa.hl.selectedIndex)       /*qual indice do hl (<select name="hl">) esta selecionado, no caso é "pt-br"(indice 0) e "en-us"(indice 1). O indice selecionado no momento é o 1 */
+    </script>
+</body>
+
+</html>

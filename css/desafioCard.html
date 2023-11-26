@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Card</title>
+    <style>
+        .curso {
+           /* float: left;*/                                /*aqui também deixa os boxs um do lado do outro*/
+            display: inline-block;                          /*faz com que o box fique um do lado do outro*/
+            vertical-align: top;                            /*o alinhamento do box é no topo, ou seja para figura ficar colada no topo*/
+            font-family: Verdana, sans-serif;               /*fonte do texto*/
+            border: solid 1px #CCC;                       /*cor da borda*/ 
+            box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);  /*sombra do box*/
+            height:  300px;                                 /*altura, largura, margem, e espaçamento dos boxs*/
+            width: 260px;
+            margin: 5px 20px;
+            padding: 5px;
+        }
+        .curso img {                       /*configuralção da imagem largura e altura*/
+            width: 100%;
+            max-height: 50%;
+        }
+        .curso-info {                     /*configuração do texto de informação do curso. Espaçamento e altura*/
+            padding: 10px;
+            height: 90px;
+            overflow: hidden;            /*"overflow: hidden" é para esconder quando um texto esta sobre outro, aqui no caso ele escondeu o nome de professor para mostrar o preço*/
+        }
+        .curso-info h4 {                  /*configuração do texto de informação do curso. Tamanho da fonte, peso da fonte(font-weight)isso para deixar a fonte em negrito, e margem 0*/ 
+            font-size: 1.4em;
+            font-weight: 100;
+            margin: 0px;                  /*esse margem 0 faz com que o texto fique mais colocado no topo, perto da figura, assim não cortando nenhuma parte do texto e conseguindo mostrar o nome do professor*/
+        }
+        .curso-preco {                   
+            float: right;               /*faz com que o preço fique colado a direita do box*/
+            padding: 10px;              /*espaçamento do preço dentro do box*/
+        }
+        .preco-de {
+            text-decoration: line-through;  /*fazendo o risco vermelho no primeiro preço*/
+            color: firebrick;
+        }
+        .preco-por {                        /*configurações do segundo preço , cor, texto em negrito, tamanho da fonte */
+            color: green;
+            font-weight: bold;             
+            font-size: 1.4em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Card</h1>
+
+    <h2>Objetivo</h2>
+    <img src="http://files.cod3r.com.br/curso-web/card.png" height="340" alt="Objetivo">
+
+    <h2>Resultado</h2>
+    <div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso1.jpg" />
+            <div class="curso-info">
+                <h4>Docker: Ferramenta essencial para Desenvolvedores</h4>
+                <p>Prof. Fulano</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+        <div class="curso">
+            <img src="http://files.cod3r.com.br/curso-web/curso2.jpg" />
+            <div class="curso-info">
+                <h4>Web Moderno com Javascript + Projetos</h4>
+                <p>Prof. Sicrano Filho</p>
+            </div>
+            <div class="curso-preco">
+                <span class="preco-de">R$80,00</span>
+                <span class="preco-por">R$50,00</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

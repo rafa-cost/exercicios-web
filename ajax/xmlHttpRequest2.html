@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <style>
+        input[type=file] {
+            display: flex;
+            margin: 10px;
+            padding: 40px;
+            font-size: 40px;
+            background: crimson;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body class="conteudo exercicio">
+    <input type="file" name="arquivo" />
+    <div class="progresso"></div>
+
+    <script>                                             //função ajaxUpload recebe uma config
+        function ajaxUpload(config) {                    //função que calculara o progresso do arquivo sendo baixado
+            const xhr = new XMLHttpRequest()
+            if (xhr.upload) {                          //se estiver presente
+                xhr.upload.onprogress = e => {         //significa que eu posso fazer um upload
+                    const atual = e.loaded             //essa função é para fazer a parte de carregamento do upload do arquivo
+                    const total = e.total
+                    const percentual = Math.floor(atual / total * 100)
+                    config.progresso({atual, total, percentual })   //essa função progresso a gente recebe a partir do objeto config
+                }
+            }
+            xhr.open("post", config.url, true)                     //metodo e url e true
+            xhr.send(config.formData)                               //usamos formData por conta do POST, estamos mandando informações para o servidor
+        }
+        document.querySelector('input[type=file]').onchange = e => {       //pelo jeito aqui é a função para salvar os arquivos baixados na pasta upload
+            const formData = new FormData()
+            const inputFile = e.target
+            formData.append(inputFile.name, inputFile.files[0])            //esse inputFile.name ira invocar o atributo arquivo de tag input, para dialogar com server.js
+            ajaxUpload({
+                url:"upload",                                              //endereço da pasta que guardara os arquivos
+                formData: formData,
+                progresso(dados) {
+                    const progresso = document.querySelector('.progresso')   //aqui estamos invocando a classe progresso, que no caso é a barra laranja de progresso
+                    progresso.innerHTML = JSON.stringify(dados)              //aqui estamos convertendo as informações para dentro da barra laranja
+                }
+            })
+        }
+    </script>
+</body>

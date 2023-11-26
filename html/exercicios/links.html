@@ -1,0 +1,17 @@
+<h1>links</h1>
+<!--url absoluta-->
+<a id="inicio" href="https://www.google.com.br">Google 1</a><br>                     <!--aqui ele abre o site na mesma pagina-->
+<a href="https://www.google.com.br" target="_blank">Google 2</a><br><br>  <!--aqui no caso ele abre uma nova aba para o site-->
+
+<!--Url Relativa-->
+<a href="index.html">Voltar 1</a><br>                           <!--vai para o arquivo index-->
+<a href="/index.html">Voltar 2</a><br>                          <!--vai para a pasta raiz do projeto e pega o arquivo index.html-->
+<a href="../index.html">Voltar 3</a><br><br>                    <!--ele não pode sair da pasta html, pq é a pasta principal do projeto(antes desta pasta não tem outra) , ai então vai para o arquivo /index.html-->
+<a href="mailto:email@empresa.com.br">Entre em contato</a>      <!--estou enviando um email para este endereço-->
+
+<div id="noticia" style="position:absolute;top:2000px;">
+<h1>Noticia Buemba!</h1>
+<p>Não era nada... :</p>                                  
+<a href="#inicio">Voltar Inicio</a>                             <!--estou referenciando o id="inicio" (href="#inicio">), isso serve para navegar até o arquivo links-->
+</div>
+<a href="#noticia">Ir para Notícia</a>                           <!--estou referenciando o id="noticia" (href="#noticia">), isso serve para navegar até a noticia-->

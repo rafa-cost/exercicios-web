@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #03</title>
+    <link rel="stylesheet" href="css/tag.css">
+    <style>
+        div {
+            border: solid 5px dodgerblue;      /*cor da borda e tamanho da fonte*/
+            font-size: 40px;
+        }
+        .flex-container div {                   
+            box-sizing: border-box;             /*aqui as configurações de padding e borda ficam dentro do box, ou seja o box não fica maior*/
+        }
+        .flex-container {                       
+            display: flex;                      /*faz com que invez de ficar um embaixo do outro, fica um do lado do outro*/
+            flex-direction: row;                /*não utilizado*/
+        }                                       /*(flex-direction: coloum) ele vai representar a altura, (flex direction: row) ele vai representar a largura*/
+        .flex-container div {                  
+            flex-basis: 100px;                  /*deixando a largura de cada box com 100px*/
+            width: 200px;                      /*não utilizado*/
+        }
+        .flex-container div:nth-child(4) {
+            /*grow shrink basis*//*aqui no caso é a ordem de definição (flex: 3 6 100px)*/
+            flex: 3 6 100px;                  /*deixando a div 4 maior*/
+        }
+        .flex-container {
+            width: 300px;                     /*não utilizado*/
+            width: 600px;                      /*largura do container*/
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

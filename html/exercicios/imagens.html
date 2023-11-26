@@ -1,0 +1,111 @@
+<div wm-slider>
+    <p>
+        <!--figura , descrição de quando a imagem não carrega e descrição para dificientes visuais(alt), largura e altura, titulo da figura(title)-->
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg"  
+        alt="Muro da Cidade" 
+        width="513" height="342"
+        title="Muro da Cidade por Tarso Bessa">
+    
+    </p>
+    <p>    <!--aqui no caso em um gif uma imagem animada-->
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342">
+    </p>
+    
+    <p class="circular">   <!--a imagem fica dentro de um circulo-->
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de Janeiro" height="342">
+    </p>
+    
+    <p class="texto">   <!--(img src=...) é a figura que aparece colada junto ao texto no começo. height(altura), align="left"(alinhar a esquerda) e aqui são as configurações do avatar-->
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar" height="50" align="left">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, maxime? Ad voluptate minus minima placeat!
+        Reiciendis facere consequatur at cupiditate atque sequi expedita voluptas, dolorem doloremque voluptatem, ipsa
+        exercitationem sunt!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui dolore cum sunt aut fugit, hic
+        magni voluptatum rerum nam, nobis optio! Amet natus, laboriosam ipsam sed ut debitis rerum facere!. Lorem ipsum
+        dolor sit amet consectetur, adipisicing elit. Eos distinctio fuga aperiam voluptates soluta modi veniam neque!
+        Accusantium nulla, quam perferendis labore quae porro natus quo sed quas, necessitatibus enim.
+    </p>
+    
+    <p class="cidade"></p>                               <!--imagem que aparece logo abaixo o texto, seu estilo css esta logo abaixo-->
+    
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width: 600px)">                 <!--abaixo de 600px esta iamgem não sera exibida, se por acaso for abaixo disso, ele mostrara a imagem abaixo. A tag picture tem essa finalidade -->
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo"> 
+        </picture>
+    </p>
+</div>
+
+
+<style>
+    p {
+        position: absolute;
+        display: none;
+    }
+
+
+
+    .circular {                              /*estilo da classe circular da foto do rio*/
+        width: 513px;
+        background-color: #444;
+    }
+
+    .texto {                               /*largura da classe texto(largura do texto)*/
+        width: 400px;
+    }
+
+    .texto img {                           /*aqui é o espaçamento entre a figura e o texto, do avatar*/
+        margin-right: 10px;
+    }
+                                           /*aqui são as configurações da class="cidade" que esta acima*/
+    .cidade {                             /*altura , largura, endereço da imagem, posicionamento da imagem, (background-size: 100%) tamanho da imagem 100%*/
+        width: 513px;
+        height: 342px;
+        background-image: url('http://files.cod3r.com.br/curso-web/imagem4.jpg');
+        background-position: center;
+        background-repeat: no-repeat;     /*aqui é para que ele não repita a imagem*/
+        background-size: 200%;
+    }
+</style>
+<script>
+    function mover(elem, inicio, fim, passo, callback) {
+        const novoInicio = inicio - passo
+        if(novoInicio >= fim) {
+            elem.style.left = novoInicio + 'px'                                   //setei o elem.style.left para novoInicio
+            setTimeout(() => mover(elem, novoInicio, fim, passo, callback), 7)    //essa função sera executada a cada 7 segundos (setTimeout)
+        } else {
+            callback()                                                            //acabei o movimento ai chamo o callback, para notificar que o movimento foi finalizado
+        }
+    }
+    /*const p = document.querySelector('[wm-slider] > p')                           //aqui ele vai pegar a primeira tag "p" parar executar
+    p.style.display = 'block'                                                     //aqui é para a tag p ficar visivel(para aparecer a imagem)
+    mover(p, 1500, -520, 5, () => {                                               //aqui faz com que a imagem deslize para esquerda e desapareça
+        console.log('Terminou!!!')
+    })*/
+
+    function slider() {
+        const elementos = document.querySelectorAll('[wm-slider] > p')         //aqui esta pegando as tags p que estão dentro de vm-slider ('[wm-slider] > p')
+        const slides = Array.from(elementos)                                   //variavel slides é = transformando variavel elementos em array
+        exibirSlide(slides, slides[0])                                         //chamando a partir da primeira figura (slides[0])
+    }
+    function exibirSlide(slides, slide) {
+        slide.style.display = 'block'                                          //aqui estou deixando o slide visivel, o slide é uma tag p
+
+        const inicio = innerWidth                                              //aqui estamos determinando o inicio e o fim do slide correndo na tela, como ele entra e como sai da tela
+        const fim = -slide.clientWidth
+
+
+    slide.style.left = `${inicio} px`                                          //ele vai começar a partir desse ponto o movimento
+
+    mover(slide, inicio, fim, 5, () => {                                    //passamos aqui as variaveis slide, inicio, fim e esse 5 tem a ver com o tempo, que cada slide percorre a tela
+        slide.style.display = 'none'                                         //aqui estou deixando o slide invisivel no final do movimento
+        exibirSlide(slides, getProximo(slides, slide))                      //chamamos a função exibir slides para passar o slides que recebi, e vamos chamar uma função para calcular o proximo slide(getProximo) 
+    })
+}
+function getProximo(lista, atual) {                                         //vai receber a lista(de slide) e o atual , e eu quero que a função me de o próxima slide
+    const i = lista.indexOf(atual) + 1                                      //( lista.indexOf(atual) ) aqui me retorna o slide atual , e aqui me da o proximo(+1)
+    return i < lista.length ? lista[i] : lista[0]                           //aqui se "i" for menor que o comprimento da lista, ele me retorna (lista[i]), se for maior ou igual, ele me retorna o primeiro elemento(lista[0])
+                                                                            //aqui se chegou ao final da lista(de slide) ele me retorna o primeiro slide
+}
+slider()                                                                    //aqui estamos executando a função, que é a função que start todo o processo
+</script>

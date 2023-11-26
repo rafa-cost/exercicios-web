@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flexbox #02</title>
+    <style>
+        div {
+            border: solid 5px dodgerblue;      /*cor e tamanho da borda*/
+            font-size: 40px;                     /*tamanho da fonte*/
+        }
+        .flex-container div {
+            box-sizing: border-box;              /*aqui o tamanho do box não aumenta por conta do padding ou borda*/
+        }
+        .flex-container {                        
+            display: flex;                       /*faz com que eles deixem de ser linha para virar bloco*/
+            height: 300px;                       /*altura do container principal e abaixo é a largura*/
+            width: 600px;
+        }
+        .flex-container div:nth-child(3) {    /*configurações do box 3*/
+            background-color: indianred;
+            order: 1;                         /*no caso aqui o elemento passa a ter uma ordem maior, os elementos com ordem maior ficam por ultimos na fila dos blocos*/
+            order: 0;                         /*aqui ele volta para ordem normal*/
+            order: -1;                        /*aqui ele fica com a ordem menor do que todos os outros, ai ele vai para primeiro da fila dos blocos*/
+            align-self: center;               /*aqui ele fica no meio do bloco, depois no final, depois no começo e por ultimo ocupa o bloco inteiro*/
+            align-self: flex-end;
+            align-self: flex-start;
+            align-self: stretch;
+        }
+        .flex-container div {                
+            width: 100px;                     /*essa é a largura de cada coluna*/
+            flex-grow: o;                    /*aqui bem dizer não faz nada*/
+            flex-grow: 1;                   /*aqui ele faz com que todos elementos cresçam igualmente ocupando todo o espaço do box pricinpal*/
+        }
+        .flex-container div:nth-child(1) {     /*não utilizado*/
+            flex-grow: 2;                      /*vai pegar essa fatia(div 1) e multiplicar por 2, deixando a coluna 1 mais larga*/
+        }
+        .flex-container {
+            width: 300px;                    /*largura atual do container*/
+            flex-shrink: 1;                  /*aqui vai diminuir todos os elementos de forma igual. Mas no momento não esta sendo utilizado*/
+        }
+        .flex-container div:nth-child(1) {     /*encolhendo a div 1*/
+            flex-shrink: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex-container ">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+    </div>
+    <script src="js/tag.js"></script>
+</body>
+
+</html>

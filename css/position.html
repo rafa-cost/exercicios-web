@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Position</title>
+    <style>
+        div {                     /*tamanho da fonte, espaçamento interno dos boxs, borda e cor da letra*/
+            font-size: 60px;
+            padding: 30px;
+            border: solid 5px #222;
+            color: #fff;
+        }
+        .static {
+            top: 100px;                        /*aparentemente essas duas configurações de posicionamento não esta sendo usada. Pelo que eu entendi é pq o static não leva em consideração esses posicionamentos*/
+            left: 100px;
+            background-color: steelblue;
+        }
+        .fixed {
+            position: fixed;                    /*posição fixa na pagina*/
+            bottom: 30px;                      /*30 px do fundo da pagina*/
+            right: opx;
+            background-color: tomato;         /*cor do box*/
+        }
+        .relative1 {
+            position: relative;              /*o position relative leva em consideração o elemento anterior*/
+            left: 50px;                    /*distancia da esquerda*/
+            top: 5px;                       /*distancia d2 5 px do topo levando em consideração o box azul, ou seja 5 pix entre o box verde e azul. Isso por conta do position relative */
+            background-color: seagreen;
+        }
+        .absolute1 {
+            position: absolute;               /*o position absolute ele leva em consideração o posicionamento do box dentro da pagina, ele não nem ai para os outros elementos(boxs)*/
+            left: 350px;                     /*350px com relação ao lado esquerdo da pagina*/
+            top: 120px;                     /*120 px com relação ao topo da pagina. Isso por conta do position absolute*/
+            background-color: violet;
+        }
+        .relative2 {
+            position: relative;    
+            left: 250px;
+            top: 2000px;                 /*esse posicionamento é para que ele fique la embaixo da pagina*/
+            width: 200px;
+            height: 200px;
+            background-color: slategrey;
+        }
+        .absolute2 {                /*posicionamento dentro de relative2 , e largura e altura*/
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background-color: orange;
+        }
+        .sticky {                           /*posicionamento que ele rola até um certo ponto e depois para no topo da tela*/
+            position: -webkit-sticky;
+            position: sticky;
+            background-color: #777;
+            top: 10px;                      /*é o posicionamento com relação a pagina , onde ele vai para depois de rolar */
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="static">Static (Padrão)</div>
+    <div class="fixed">Fixed</div>
+    <div class="relative1">Relative</div>
+    <div class="absolute1">Absolute</div>
+
+    <div class="relative2">
+        <div class="absolute2"></div>
+    </div>
+
+    <div class="sticky">Sticky</div>
+    <p style="padding-bottom: 2000px;">Opa</p>      <!--esse "padding-bottom: 2000px;" é para ter a barra de rolagem na parte lateral da pagina-->
+</body>
+
+</html>

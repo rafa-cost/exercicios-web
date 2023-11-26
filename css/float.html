@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Float</title>
+    <style>
+        /*sempre que usar float fique atento para o uso do clear e do both, etc. Pois os elementos flutuam e tem que saber trabalhar com isso*/
+        body {
+            background-color: #222;     /*cor de fundo da pagina*/
+        }
+        
+        .c1 {
+            background-color: red;      /*box vermelho direita*/
+            float: right;
+        }
+
+        .c2 {
+            background-color: green;    /*"clear: right" faz com que o box verde não fique na mesma linha que o vermelho pq assim que o vermelho vai para direita o box verde sobe e fica mesma linha que o box vermelho só que do lado esquerdo, e com esse comando o box verde fica na linha de baixo. E colocando o left ele fica no lado esquerdo*/
+            clear: right;
+            float: left;
+        }
+        
+        .c3 {
+            background-color: blue;   /*esse "clear: both" é para o box azul não ficar atras do verde, assim ele vai para linha de baixo. Podemos usar os mesmos comando do c2 que daria certo também */
+            clear: both;
+        }
+
+        .c4 {
+            background-color: orange;   /*float right , que no meu entender é pra ficar a direita*/
+            float: right;
+        }
+        div {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="c1"></div>
+    <div class="c2"></div>
+    <div class="c3"></div>
+    <div class="c4"></div>
+</body>
+
+</html>

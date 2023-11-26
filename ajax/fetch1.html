@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Fetch API #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        const url = 'dados/estados.json'      //endereço do arquivo
+        fetch(url)                            //(fetch)buscando o endereço do arquivo
+        .then(resp => resp.json())            //como é um arquivo json utilizamos a função json para converter o arquivo em um array com todos os dados
+        .then(estados => {                    //pegando array estados, pegando arquivo estados usando função reduce pegando o html e o estado por unidade, html + é um acumulador, pegando de estado o valor nome e transformando em uma lista, e a string vazia é para pegar o primeiro valor do arquivo se não começa pelo segundo . E  passando tudo isso para variavel itens.
+            const itens = estados.reduce(
+                (html, estado) => html + `<li>${estado.nome}</li>`, ''
+            )
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)   // passando itens(const itens) para dentro de tag ul, para imprimir o resultado na pagina
+        })
+    </script>
+</body>

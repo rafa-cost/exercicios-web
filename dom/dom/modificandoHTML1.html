@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <script>
+        const body = document.querySelector('body')        //aqui estamos selecionando o body para inserir os elementos dentro do body
+        const div1 = document.createElement('div')         //criando elemento div1
+        div1.classList.add('destaque')                     //adicionando na lista a classe destaque, que deixara o box primeiro destacado
+        div1.innerHTML = 'Primeiro'                         // nome do box da div1
+        const div2 = document.createElement('div')          //criando a div2
+        div2.setAttribute('wm-atributo', 'valor')           //definindo atributo
+        div2.innerHTML = 'Segundo'                          //colocando o nome no segundo box
+        const p = document.createElement('p')               //estamos criando um paragrafo que ficara dentro de div
+        p.innerHTML = 'Terceiro'                            //colocando o nome no terceiro box
+        const div3 = document.createElement('div')           //criando a div3
+        div3.appendChild(p)                                 //aqui estamos colocando o paragrafo dentro de div 3
+        body.appendChild(div1)                               //colocando a divs dentro do body
+        body.appendChild(div2)
+        body.appendChild(div3)
+        const texto = document.createTextNode('Antes...')    //criando um texto dentro de variavel texto
+        div3.insertBefore(texto, div3.childNodes[0])         //colocando esse texto dentro de div 3 no indice 0, ou seja sera o primeiro texto a aparecer no box
+
+        const div4 = div3.cloneNode(true)                    //criando uma variavel div4 , clonando a div3. Ou seja div 4 sera igual a div 3 
+        body.appendChild(div4)                               //anexado div4 ao body
+        body.removeChild(div3)                               //excluindo div3
+                                                             //as cnfigurações dos boxs estão no css
+
+    </script>
+</body>
+
+</html>

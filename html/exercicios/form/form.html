@@ -1,0 +1,47 @@
+<h1>Formulário</h1>
+<form method="POST">
+    <input type="hidden" name="id" value="3">
+    <input type="text" name="nome">                                       <!--caixa de nome -->
+    <input type="password" name="senha">                                  <!--caixa de senha-->
+    <textarea name="bio" cols="30" rows="10"></textarea>                  <!--caixa de descrição 30 colunas 10 linhas-->
+    <div>                                                                 <!--formulario de opções para escolher uma opção-->
+        <input type="radio" name="tipo" value="admin"> Admin
+        <input type="radio" name="tipo" value="regular"> Regular 
+        <input type="radio" name="tipo" value="professor"> Professor
+    </div>
+    <div>
+        <input type="checkbox" name="ativo"> Ativo                       <!--formulario de opções de marcar-->
+    </div>
+    
+    <select name="estado">                                               <!--um botão que abre uma caixa de opções-->                      
+        <option value="">Selecione</option>
+        <option value="ac">Acre</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+    </select>
+
+    <select name="interesses" multiple size="6">                       <!--um formulario com 6 opções, onde eu posso escolher multiplas opções-->
+    <option value="js">JS</option>
+    <option value="java">Java</option>
+    <option value="php">PHP</option>
+    <option value="python">Python</option>
+    <option value="go">GO</option>
+    <option value="c">C</option>
+</select>
+
+    <button formaction="http://localhost:3003/usuarios">Incluir</button>
+    <button formaction="http://localhost:3003/usuarios/3">Alterar</button>
+</form>
+
+<style>
+    input,
+    textarea,
+    select {                            /*(display: block) para que os campos não fiquem na mesma linha ou seja um embaixo do outro, margem de fundo 10 px para dar espaçamento entre os formularios, */
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type=radio],                 /*estilo de radio e checkbox, para que a marcação e o texto fiquem na mesma linha*/
+    input[type=checkbox] {
+        display: inline;
+    }
+</style>

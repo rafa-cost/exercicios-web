@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Mini SPA</title>
+    <link rel='stylesheet' href='../css/estilo.css'>
+    <style>
+        nav {
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #FFF;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+
+<body class="conteudo">
+    <nav>
+        <a href wm-link="series.html" wm-destino=".pagina">Séries</a> |
+        <a href wm-link="linguagens.html" wm-destino=".pagina">Linguagens</a>
+    </nav>
+    <div class="pagina"></div>
+    <script>
+        function navegarViaAjax(url, seletor, push = true) {                     //aqui a função vai receber uma url e um seletor, como esta nas 2 tags "a" acima
+            if(!url || !seletor) return                                          //se tiver falatando o url ou o seletor ele ja sai da função(return)
+            const elemento = document.querySelector(seletor)                     //aqui passando o selector que recebemos como parametro
+            fetch(url)                                                           //estamos aqui fazendo a requisição ajax //(fetch)buscando a url
+            .then(resp => resp.text())                                           //aqui estamos pegando o texto do html
+            .then(html => {                                                     //aqui pegamos o html e passamos para elemento
+                elemento.innerHTML = html
+                if(push) {                                                     //isso aqui tem a ver com a barra de endereço da pagina, quando vc clicar em series ou linguagens a barra de endereço vai atualizar indicando em qual conteudo vc esta. Assim como a função abaixo (window.onpopstate)
+                    history.pushState({seletor},"Página Ajax", url)
+                }
+            })
+        }
+        document.querySelectorAll('[wm-link]').forEach(link => {
+            const url = link.attributes['wm-link'].value                      //pegamos as propriedades dos links
+            const seletorDestino = link.attributes['wm-destino'].value
+            
+            link.onclick = e => {                                             //função a partir do click
+                e.preventDefault()                                            //que vai gerar um evento, quando clicarmos no link sera direcionado para o conteudo do link, se mantendo na mesma pagina 
+                navegarViaAjax(url, seletorDestino)                          //chamamos a função "navegarViaAjax" e passamos a url e seletorDestino(variaveis que criamos na função acima)
+            }
+        })
+        window.onpopstate = e => {                                             //isso aqui tem a ver com a barra de endereço da pagina, quando vc clicar em series ou linguagens a barra de endereço vai atualizar indicando em qual conteudo vc esta
+            if(e.state) {
+                navegarViaAjax(window.location.href, e.state.seletor, false)
+            }
+        }
+    </script>
+</body>

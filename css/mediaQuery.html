@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Media Query</title>
+    <style>
+        div {                                                   /*configurações dos boxs*/
+            font-size: 40px;
+            margin: 20px;
+            padding: 20px;
+            background-color: coral;
+            border: solid 5px;
+            display: none;                                     /*o display none age em conjunto para não mostrar a msg quando o intervalo estiver fora*/
+        }
+        @media (max-width: 600px) {                            /*até 600px aperece essa msg se passar disso a msg some(display: block)*/
+            .muito-pequeno {display: block;}                     
+        }
+        @media (max-width: 1000px), (orientation: portrait) {  /*até 1000px aperece essa msg ou se a orientação for retrato(orientation: portrait), se passar disso a msg some(display: block)*/
+            .pequeno-retrato {display: block;}
+        }
+        @media (min-width: 500px) and (max-width: 1000px) {    /*entre 500px e 1000px aparece essa msg, se ficar fora do intervalo a msg some(display: block)*/
+            .intervalo {display: block;}
+        }
+    </style>
+</head>
+<body>
+    <div class="muito-pequeno">Muito Pequeno</div>
+    <div class="pequeno-retrato">Pequeno ou Retrato</div>
+    <div class="intervalo">Intervalo</div>
+</body>
+</html>

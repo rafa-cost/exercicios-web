@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+       
+        body {
+            margin: 0;                                   /*margem da barra de menu e da pagina*/
+            font-family: 'Oswald', sans-serif;           /*letra do menu*/
+            background-color: lightgray;               /*cor de fundo da pagina*/
+        }
+        .cabecalho {
+            background: #333;                           /*cor de fundo do menu*/
+            color: #fff;                                /*não utilizado*/
+            border-bottom: solid 5px #4faddb;           /*borda de baixo do menu*/
+            height: 80px;                                 /*altura do menu*/
+            
+        }
+    
+        .logo img {                            /*tamanho do logo em px*/
+            height: 50px;
+        }
+
+        .menu ul {
+            list-style: none;
+            margin: 0;                     /*os botões do menu tem margem 0*/
+            padding: 0;
+        }
+        .cabecalho a {
+            text-decoration: none;           /*para tirar as linhas de baixo dos links*/
+            color: #eee;                   /*cor da fonte*/
+            font-size: 1.3em;                /*tamanho da fonte, das opções de botões do menu */
+            padding: 10px 15px;              /*espaçamento de dentro dos botões*/
+        }
+                                             /*efeito ao passar o mouse sobre o botão*/
+        .menu a:hover {
+            background-color: #4faddb;    /*o botão ficara desta cor ao passar o mouse em cima*/
+            color: #000;                  /*e a letra desta cor*/
+        }
+        .cabecalho .botao {
+            border-radius: 30px;            /*configuração do botão registrar*/
+            padding: 10px 25px;
+            margin-right: 10px;
+        }
+
+        .destaque {
+            background: #f50a31;         /*cor de fundo e letra do botão registrar*/
+            color: #fff;
+        }
+      /*////////////////////solução com Flex Box//////////////////*/
+      .cabecalho {
+        display: flex;                         /*deixando os elementos do cabeçalho, um do lado do outro (de forma horizontal em linha) ao inves de um embaixo do outro*/
+        align-items: center;                   /*alinha todos os elementos que estão dentro da barra de menu de forma vertical ou seja um alinhamento de altura para a altura ficar no meio da barra. Alinhamento de forma vertica e não horizontal*/
+        justify-content: space-between;        /*ele da um espaçamento entre os itens do menu. Entre o logo, entre os botões e entre a autenticação*/
+      }
+      .menu {
+        flex-grow: 10;                        /*ele faz com que os botões do menu ocupem mais espaço dentro da barra. Ele cola a esquerda os botões de menu junto ao logo*/          
+      }
+      .menu ul {                               /*ele organiza os elementos que estão um embaixo do outro para deixar eles organizados horizontalmente , um do lado do outro*/           
+        display: flex;
+      }
+      .menu li {
+        margin: 0px 10px;                    /*margem de 10px nas laterais dos botões de menu */
+      }
+
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />       <!--figura da cod3r-->
+            </a>
+        </div>
+
+        <nav class="menu">                                      <!--menu normal-->
+            <ul>
+                <li>                                              <!--botões-->
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">                                         <!--botões de atenticar-->
+            <a href="#login">Login</a>
+            <a href="#registar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        window.onhashchange = function(e) {         //função de quando clicar no botão acontecera um evento
+            const oldURL = e.oldURL.split('#')[1]   //ira pegar da resposta só o que vem depois do # ("#inicio"), aqui no caso o url antigo e na linha de baixo o url novo
+            const newURL = e.newURL.split('#')[1]
+            console.log(oldURL, newURL)             //ira fazer a impressão
+            const oldLink = document.querySelector(`.menu a[href='#${oldURL}']`)     //aqui pegando o menu clicado anteriormente
+            const newLink = document.querySelector(`.menu a[href='#${newURL}']`)     //e aqui o menu recem clicado
+            oldLink && oldLink.classList.remove('selected')                       //aqui ele remove a marcação da classe selected do menu antigo e na linha de baixo ele adiciona no menu novo
+            newLink && newLink.classList.add('selected')
+        }
+    </script>
+</body>
+
+</html>

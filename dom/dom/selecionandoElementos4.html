@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+        HTMLCollection.prototype.log = log
+        HTMLAnchorElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        lista.parentNode.log()                        /*aqui o resultado é a div que é pai da ul*/
+        lista.childNodes.log()                        /*aqui o resultado sera as 3 li*//*chilNodes ele pega os espaços do html como text*/
+
+        const primeiro = lista.firstChild
+        primeiro.log()                                /*sera um elemento de texto por conta dos espaços em branco*/
+        primeiro.nextSibling.log()                    /*aqui ele pega o um espaço em branco(text) e o primeiro elemento de li(Pedro)*/
+
+        const ultimo = lista.lastChild
+        ultimo.log()                                   /*sera um texto por conta de espaços em branco*/
+        ultimo.previousSibling.log()                   /*aqui ele vai pegar a Bia que é o ultimo elemnto*/
+                                                       /*o children é diferente da função acima, aqui ela não pega os espaços como text*/
+        lista.children.log()                           /*aqui ele somente pega os l. Ele não faz que nem as funções acima que pagam os espaços do html como text*/
+        lista.firstElementChild.log()                  /*aqui ele tras o primeiro elemento que é Pedro*/
+        lista.lastElementChild.log()                   /*e aqui o ultimo que é Bia*/
+        lista.parentNode.previousElementSibling.log()  /*aqui ira imprimir a tag p (inicio). A lista é a tag ul(que tem os 3 li), o parentNode seria a div que esta envolvendo esta ul, o elemento irmão anterior seria a div que vem antes com a tag p (inicio)*/ 
+        lista.parentNode.nextElementSibling.log()      /*e aqui é o contrario ele pegara o proximo elemento que sera a div p (fim)*/
+        
+        document.querySelectorAll('div ul li').log()   /*aqui vc tera um nodeList com as li */
+    </script>
+</body>
+
+</html>

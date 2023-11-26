@@ -1,0 +1,49 @@
+<h1>Projeto</h1>
+<ul class="tree">                                   <!--essa class ta importando o css de "http://files.cod3r.com.br/curso-web/tree.css" como mostra a linha 39-->
+    <li>
+        <span wm-folder>backend</span>              <!--"span wm-folder"esta transformando backend em uma pasta. "wm-folder", significa web modermo, que é um css que ele importa do site do curso dele "COD3r" -->
+        <ul>
+            <li>
+                <span wm-folder>app</span>          <!--"span wm-folder"esta fazendo tipo uma pasta -->
+                <ul>
+
+                    <li>produto.js</li>
+                    <li>usuario.js</li>
+                    <li>venda.js</li>
+                </ul>
+            </li>
+            <li>
+                <span wm-folder>config</span>
+                <ul>
+                    <li>banco.js</li>
+                    <li>rotas.js</li>
+                    <li>servidor.js</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <span wm-folder>frontend</span>
+        <ul>
+            <li>
+                <span wm-folder>public</span>
+                <ul>
+                    <li>app.css</li>
+                    <li>app.js</li>
+                    <li>index.html</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+<link rel="stylesheet" href="http://files.cod3r.com.br/curso-web/tree.css">            <!--aqui é o css que importamos-->
+<script>
+    document.querySelectorAll('[wm-folder]').forEach(folder => {               //"document.querySelectorAll"aqui estou selecionando todos os elementos que tem esta propriedade ('[wm-folder]'), (.forEach) para cada elemento "folder" 
+        folder.onclick = function(e) {                                         //ao clicar , gerara um evento, que vamos definir dentro da função
+            const ul = folder.nextElementSibling                               //"nextElementSibling" pegar o próximo elemento , pelo que eu entendi ele gerara um evento que ao clicar na pasta ira mostrar os elementos dentro dela
+            const d = ul.style.display                                         //essa variavel d, ira representar o display atual da "ul"
+            ul.style.display = d === 'none' ? 'block' : 'none'                 //se o display for igual a none ele vai receber block ou seja vou mudar a visibilidade, caso contrario ele é visivel ai vou aplicar none para ele ficar invisivel
+        }
+
+    })
+</script>

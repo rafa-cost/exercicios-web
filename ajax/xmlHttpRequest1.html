@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>XMLHttpRequest #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <h1>Estados</h1>
+
+    <script>
+        function ajax(config) {
+            const xhr = new XMLHttpRequest()
+            xhr.open(config.metodo, config.url, true)
+            
+            xhr.onload = e => {
+                if (xhr.status === 200) {             //(200)codigo se sucesso
+                config.sucesso(xhr.response)
+            } else if (xhr.status >= 400) {            //(400)código de erro
+                config.erro({
+                    codigo: xhr.status,                //aqui ele vai dar o codigo de erro
+                    texto: xhr.statusText              // e aqui o texto de erro
+                })
+            }
+        }
+        xhr.send()                                      //aqui vai enviar a requisição
+    }
+function criarTabela(estados) {                            //aqui é a tabela que aparece na tela, da para observar que que os dados postos estão na ordem dos da tabela
+    const linhas = estados.map(estado => {                  //pegamos o array estado e utilizando o map para fazer com que esse array vire uma tabela
+                const tdId = document.createElement('td')
+                tdId.innerHTML = estado.id
+
+                const tdNome = document.createElement('td')
+                tdNome.innerHTML = estado.nome
+
+                const tdSigla = document.createElement('td')
+                tdSigla.innerHTML = estado.sigla
+                const tr = document.createElement('tr')
+                tr.appendChild(tdId)
+                tr.appendChild(tdNome)
+                tr.appendChild(tdSigla)
+
+                return tr
+            })
+            const tabela = document.createElement('table')
+            linhas.forEach(linha => tabela.appendChild(linha))
+            document.body.appendChild(tabela)
+        
+}
+
+    ajax({
+        url: "dados/estados.json",           //pegando o arquivo pelo endereço
+        metodo: "get",                       //aqui vai ser um metodo get
+        sucesso(resposta) {
+            const estados = JSON.parse(resposta)
+            criarTabela(estados)
+            },
+        erro(e){                                                           //aqui é a msg de erro , com código e texto
+            const msg = document.createTextNode(`${e.codigo}: ${e.texto}`)         
+            document.body.appendChild(msg)
+        }
+    })
+
+    </script>
+</body>

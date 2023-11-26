@@ -1,0 +1,23 @@
+body {                        /*da um espaçamento na tag body para a tag div, pode observar que esse espaçamento é maior que das outras tags*/
+    font-size: 40px;
+}
+
+ul, ol {                      /*deixando as tags ul e ol coladas no canto esquerdo do box*/
+    padding: 0;
+}
+
+li {
+    margin-left: 60px;
+}
+ .tag {
+    border: solid 4px;          /*borda solida e grossura*/
+    margin: 5px;                /*essa margin faz o espaçamento entre as linhas dentro do box*/
+ }
+
+ .tag label {                   /*configuração dos nomes das tags*/
+    color: #fff;
+    font-size: 25px;            /*tamanho da fonte*/
+    vertical-align: top;         /*deixando o nome das tags no topo a esquerda dentro dos boxs*/
+    margin-right: 10px;         /*espaçamento entre o nome da tag e o numero*/
+    padding: 0px 5px 3px 3px;   /*espaçamento dentro do box*/
+ }

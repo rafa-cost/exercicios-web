@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Altura e Largura</title>
+    <style>
+        html {
+            height: 100%;                      /*aqui estamos passando para o html pegar 100% de altura da pagina, por padrão ele pela só a largura 100%. Agora com essa configuração ele esta pegando 100% da altura e passando isso para o body fazer configurações de altura pela "%"*/
+        }
+
+        body {                                /*o body por padrão ele ocupa a largura da pagina toda, agora a altura não, por isso é melhor colocar a altura no formato de "px" do que por "%"   */
+            font-size: 40px;                  /*tamanho da fonte, tanto o div quanto span herdam de body o tamanho da fonte*/
+            background-color: coral;        /*cor de fundo da pagina*/
+            height: 100%;                     /*altura 100%*/
+            margin: 0;                        /*margem da pagina sobre os boxs é zero*/
+        }
+
+        div {                                  /*aqui e embaixo são as cores dos boxs div e span*/
+            background-color: seagreen;
+        }
+
+        span {
+            background-color: dodgerblue;
+        }
+        span, div {
+            width: 49%;                    /*largura dos boxs*/
+            height: 250px;                 /*altura dos boxs*/
+            height: 50%;                   /*altura dos boxs*/
+            display: block;                /*pega somente o ultimo display . Esse deixa um boxs embaixo do outro, o outro deixa um do lado do outro. Lembrando que tanto o display block, quanto o display inline-block passam as configurações de estilo para tag span*/
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body>     <!--se der esoaço entre a div e o span, os boxs dão um pequeno espaçamento entre eles, agora se não der espaço eles ficam grudados-->
+    <div>Título</div> <span>Subtítulo</span>
+</body>
+
+</html>

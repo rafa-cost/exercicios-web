@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #02</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body class="conteudo exercicio">
+    <div id="primeiro">#primeiro</div>
+    <div>Segundo</div>
+    <div class="terceiro ultimo"><span wb-attrib>.terceiro .ultimo</span></div>
+    <script>              
+        document.querySelector('#primeiro').classList.add('destaque')                     //aqui esta passando para id primeiro a classe destaque, mas no momento esta linha não esta em uso
+        const selecionar = seletor =>                                                    //função selecionar
+        document.querySelectorAll(seletor).forEach(e => e.classList.add('destaque'))     //consultar todos os seletores, para cada elemento adicionar classe destaque(função selecionar toda vez que for acionada, adicionara a classe destaque do css)
+        const deselecionar = seletor =>                                                  //função deselecionar
+        document.querySelectorAll(seletor).forEach(e => e.classList.remove('destaque'))  //consultar todos selecionados, para elemento remover classe destaque do css(essa função toda vez que acionada ira remover classe destaque)
+
+        selecionar('div')                      /*seleciona todos*/
+        
+        deselecionar('*')                      /*aqui estamos deselecionando a opção, para passar um novo seletor*/
+        selecionar('.terceiro.ultimo')         /*seleciona o ultimo*/
+
+        deselecionar('*')
+        selecionar(':not(#primeiro)')           /*só não seleciona o que tiver o id=primeiro*/
+
+        deselecionar('*')
+        selecionar(':nth-child(1)')            /*aqui ele esta selecionando o primeiro elemento do body, então seleciona a primeira div e também o primeiro span*/
+
+        deselecionar('*')
+        selecionar('div:nth-of-type(1)')    /*aqui ele esta pegando o primeiro elemento do tipo div*/
+
+        deselecionar('*')                  /*seleciona o ultimo por conta do atributo*/
+        selecionar('[wb-attrib]')
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+</html>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #03</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        
+        .esquerda {
+            height: 100vh;
+            width: 50%;
+            background-color: coral;
+        }
+        
+        .direita {
+            height: 100vh;
+            width: 50%;
+            background-color: cornflowerblue;
+        }
+        
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="esquerda" wm-dropzone>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+    </div>
+    <div class="direita" wm-dropzone></div>
+    <script>
+        const items = document.querySelectorAll('[wm-dropzone] .item')
+        items.forEach((item, index) => {
+            item.draggable = true                            //transformando em elemento arrastavel
+            item.id = item.id || `draggable-item-${index}`    //o elemento tem que ter um id
+            item.ondragstart = e =>                          //quando começar a arrastar o elemento ele vai chamar os comandos abaixo
+            e.dataTransfer.setData('item-id', e.target.id)   //no momento em que começa a arrastar eu setei o id do elemento no dataTransfer
+        })
+
+        const dropzones = document.querySelectorAll('[wm-dropzone]')
+        dropzones.forEach(dropzone => {
+            dropzone.ondragover = e => e.preventDefault()   //aqui é no momento em que termina de arrastar um elemento
+            dropzone.ondrop = function(e) {                    //para que no momento que eu soltar o elemento
+                const id = e.dataTransfer.getData('item-id')  //eu pegue o id do elemento
+                const item = document.getElementById(id)     //entenda qual elemento de fato esta sendo movido
+                //e.target.appendChild(item)
+                dropzone.appendChild(item)                  //aqui indica que só podemos colocar o elemento em um dropzone, ou seja não da coloca um elemento sobre o outro. No momento eu que eu troco ele de lugar, ele deixa de existir no local de origem, e passa a existir nesse novo local
+            }
+        })
+    </script>
+</body>
+
+</html>
